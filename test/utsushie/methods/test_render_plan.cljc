@@ -1,6 +1,6 @@
 (ns utsushie.methods.test-render-plan
   "Cross-language oracle tests for utsushie.methods.render-plan — the Clojure port of
-  methods/render_plan.py.
+  the retired Python oracle.
 
   Ported 1:1 from the REAL Python test_render_plan.py (9 tests): the U1–U6 charter
   gates enforced in code (mirroring lex/video.edn) — ok plan shape, narration bounded

@@ -5,10 +5,10 @@
 | Dimension | State |
 |---|---|
 | Lexicon | ✅ `lex/video.edn` — `com.etzhayyim.utsushie.video` with U1–U6 structural gates |
-| Methods | ✅ `methods/render_plan.py` — offline, pure, deterministic plan builder + R0-gated `render()` |
-| Tests | ✅ `methods/test_render_plan.py` — 9 standalone tests (gate enforcement); `./run_tests.sh` green |
-| Cells | ⛔ none yet (R1 — Pregel cell wrapping build_plan + the G8 render step) |
-| Manifest | ✅ `manifest.jsonld` — `did:web:etzhayyim.com:actor:utsushie`, Tier-B, U1–U6 exclusions, sibling map (R0 runtime=offline-method; Murakumo fleet placement = R1) |
+| Methods | ✅ `src/utsushie/methods/render_plan.cljc` — offline, pure, deterministic plan builder + R0-gated `render()` |
+| Tests | ✅ Clojure/EDN suite via `clojure -M -e '(load-file "run_tests.clj")'` |
+| Cells | ✅ dry-run social-post membrane; live publication remains R1-gated |
+| Manifest | ✅ canonical `manifest.edn`; legacy JSON-LD is external wire only |
 | Render | ⛔ R0-gated (G8 + Murakumo-only, U5 = G6) — `render()` raises by design |
 | Publish | ⛔ R1 — i18n scripts (D3) + feed-post membrane (D4), member-signed (U6 = G7) |
 

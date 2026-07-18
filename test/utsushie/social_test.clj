@@ -1,0 +1,34 @@
+(ns utsushie.social-test
+  (:require [clojure.test :refer [deftest is testing]]
+            [utsushie.cells.social-post.state-machine :as cell]
+            [utsushie.methods.social :as social]))
+
+(deftest dry-run-social-projection
+  (let [post (social/draft-observation-post
+              "映像計画" "記事を短い映像計画へ写す。" ["source-a" "source-b"] "member")]
+    (is (= ":dry-run" (get post ":post/status")))
+    (is (true? (get post ":post/is-mirror")))
+    (is (false? (get post ":post/server-held-key")))
+    (is (= ["source-a" "source-b"] (get post ":post/sources")))))
+
+(deftest social-boundaries-refuse
+  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"needs ≥ 2"
+                        (social/draft-observation-post "x" "y" ["only-one"])))
+  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"Council Lv6"
+                        (social/build-live {}))))
+
+(deftest cell-drafts-only-safe-records
+  (let [draft (get (cell/transition-to-drafted
+                    {"subject" "映像計画" "sources" ["a" "b"]}) "cell_state")]
+    (is (= cell/phase-drafted (get draft "phase")))
+    (is (= ":dry-run" (get-in draft ["payload" ":post/status"])))
+    (is (false? (get-in draft ["payload" ":post/server-held-key"]))))
+  (testing "publication and server-held keys are structurally refused"
+    (is (= cell/phase-refused
+           (get-in (cell/transition-to-drafted
+                    {"sources" ["a" "b"] "requested_status" "published"})
+                   ["cell_state" "phase"])))
+    (is (= cell/phase-refused
+           (get-in (cell/transition-to-drafted
+                    {"sources" ["a" "b"] "server_held_key" true})
+                   ["cell_state" "phase"])))))

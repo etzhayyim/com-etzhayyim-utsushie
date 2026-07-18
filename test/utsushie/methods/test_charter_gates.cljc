@@ -21,9 +21,7 @@
 
 #?(:clj
    (do
-     (def ^:private here (.getParentFile (java.io.File. ^String *file*)))      ;; methods/
-     (def ^:private actor-dir (.getParentFile here))                          ;; utsushie/
-     (def ^:private lexdir (java.io.File. actor-dir "lex"))
+     (def ^:private lexdir (java.io.File. "lex"))
      (defn- lex [name]
        (edn/read-string (slurp (java.io.File. lexdir (str name ".edn")))))))
 

@@ -1,6 +1,6 @@
 (ns utsushie.methods.render-plan
   "utsushie 写し絵 — offline render-PLAN builder (R0, charter-gated).
-  Clojure port of methods/render_plan.py (1:1). ADR-2606161536 §D2.
+  Canonical Clojure render-plan implementation. ADR-2606161536 §D2.
 
   Pure and offline: turns a kawaraban :article into a deterministic *plan* for a short
   narrated video. NEVER calls a model and NEVER renders — `render` raises at R0 because

@@ -1,0 +1,16 @@
+(require '[clojure.test :as t])
+
+(doseq [ns-sym '[utsushie.methods.test-render-plan
+                  utsushie.methods.test-charter-gates
+                  utsushie.social-test
+                  utsushie.murakumo-test
+                  utsushie.repository-contract-test]]
+  (require ns-sym))
+
+(let [result (apply t/run-tests
+                    '[utsushie.methods.test-render-plan
+                      utsushie.methods.test-charter-gates
+                      utsushie.social-test
+                      utsushie.murakumo-test
+                      utsushie.repository-contract-test])]
+  (System/exit (if (zero? (+ (:fail result) (:error result))) 0 1)))

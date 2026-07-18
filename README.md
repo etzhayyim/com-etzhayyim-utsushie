@@ -38,11 +38,16 @@ kawaraban :article ─► utsushie.build_plan ─► {narrationScript ≤ excerp
 ```
 utsushie/
 ├── README.md / CLAUDE.md / MATURITY.md
-├── run_tests.sh                     # one-command runner
+├── manifest.edn / identity.edn      # canonical actor metadata and identity
+├── dependencies.edn                 # immutable root + flat-west actor pins
+├── schema.edn                       # canonical Datascript/Datomic schema
+├── run_tests.clj                    # one-command Clojure test entrypoint
 ├── lex/video.edn                    # com.etzhayyim.utsushie.video (U1–U6 structural gates)
-└── methods/
-    ├── render_plan.py               # offline, pure: build_plan() + R0-gated render()
-    └── test_render_plan.py          # 9 standalone tests (gate enforcement)
+├── src/utsushie/
+│   ├── methods/                     # render plan + dry-run social projection
+│   └── cells/social_post/           # publication membrane state machine
+├── test/utsushie/                   # render, charter, social, Murakumo, repo contracts
+└── wire/                            # external JSON-LD compatibility only
 ```
 
 ## Siblings / boundaries
@@ -52,3 +57,7 @@ utsushie/
 - **animeka / shinshi / yukkuri / ongakuka / kokoro-ts** — the I2V / TTS / BGM / ffmpeg
   primitives a future R1 render reuses (Murakumo-fleet only, per U5).
 - **feed-post membrane (ADR-2605231902)** — the L1/L2/L3 publish path (D4).
+
+The actor dependencies are revision-pinned in `dependencies.edn`; sibling checkout paths
+remain flat west paths under `orgs/etzhayyim/com-etzhayyim-*`. No source or test reaches
+back into the former numbered root directory.

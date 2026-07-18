@@ -1,0 +1,28 @@
+(ns utsushie.repository-contract-test
+  (:require [clojure.edn :as edn]
+            [clojure.java.io :as io]
+            [clojure.test :refer [deftest is]]))
+
+(defn- read-edn [path]
+  (edn/read-string (slurp path)))
+
+(deftest canonical-repository-shape
+  (doseq [path ["manifest.edn" "identity.edn" "dependencies.edn"
+                "repository-contracts.edn" "schema.edn" "lex/video.edn"]]
+    (is (some? (read-edn path)) path))
+  (is (= "utsushie" (:actor/id (read-edn "manifest.edn"))))
+  (is (= "com.etzhayyim.utsushie.video" (:id (read-edn "lex/video.edn"))))
+  (is (not (.exists (io/file "manifest.jsonld"))))
+  (is (not (.exists (io/file "run_tests.sh"))))
+  (is (.exists (io/file "wire/manifest.jsonld")))
+  (is (.exists (io/file "wire/video.json")))
+  (is (.exists (io/file ".well-known/did.json"))))
+
+(deftest dependencies-are-immutable-flat-west-references
+  (let [deps (:dependencies (read-edn "dependencies.edn"))]
+    (is (= #{'etzhayyim/root 'com.etzhayyim/i18n 'com.etzhayyim/kawaraban}
+           (set (map :dependency/id deps))))
+    (is (every? #(re-matches #"[0-9a-f]{40}" (:dependency/revision %)) deps))
+    (is (= #{"orgs/etzhayyim/com-etzhayyim-i18n"
+             "orgs/etzhayyim/com-etzhayyim-kawaraban"}
+           (set (keep :dependency/west-path deps))))))
