@@ -1,0 +1,7 @@
+{:repo/id "network-awai/utsushie"
+ :repo/plane :role
+ :repo/role :aozora-news-video-presenter
+ :repo/boundary {:consumer-surface "network-awai/app-aozora"
+                 :source-medium "etzhayyim/com-etzhayyim-kawaraban"
+                 :i18n-substrate "kotoba-lang/i18n-actor"
+                 :compatibility-repository "etzhayyim/com-etzhayyim-utsushie"}}

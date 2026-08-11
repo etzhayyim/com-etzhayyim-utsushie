@@ -4,6 +4,11 @@
 > links out. The 映像 (moving-image) sibling of 瓦版's printed sheet. ADR-2606161536 §D2.
 > **R0 design scaffold** (2026-06-16).
 
+The executable News-to-Video presentation actor is owned by `network-awai/utsushie`. Its source
+medium, `etzhayyim/com-etzhayyim-kawaraban`, remains an etzhayyim organism wire; utsushie owns only
+the Aozora/AT Protocol presentation edge. Existing DID, AT Protocol, Radicle, and old GitHub
+identities remain compatibility identifiers.
+
 写し絵 (utsushie) was the Edo-period magic-lantern moving-picture show — Japan's
 pre-cinema projected image, the visual companion to the 瓦版 (kawaraban) news broadsheet.
 utsushie is to video what kawaraban is to text: **a medium, never a source** (G11).
@@ -58,6 +63,6 @@ utsushie/
   primitives a future R1 render reuses (Murakumo-fleet only, per U5).
 - **feed-post membrane (ADR-2605231902)** — the L1/L2/L3 publish path (D4).
 
-The actor dependencies are revision-pinned in `dependencies.edn`; sibling checkout paths
-remain flat west paths under `orgs/etzhayyim/com-etzhayyim-*`. No source or test reaches
-back into the former numbered root directory.
+The actor dependencies are revision-pinned in `dependencies.edn`; i18n resolves through
+`orgs/kotoba-lang/i18n-actor`, while kawaraban remains at its etzhayyim path. No source or test
+reaches back into the former numbered root directory.
