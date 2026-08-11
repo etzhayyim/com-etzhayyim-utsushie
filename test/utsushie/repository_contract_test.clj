@@ -23,6 +23,6 @@
     (is (= #{'etzhayyim/root 'com.etzhayyim/i18n 'com.etzhayyim/kawaraban}
            (set (map :dependency/id deps))))
     (is (every? #(re-matches #"[0-9a-f]{40}" (:dependency/revision %)) deps))
-    (is (= #{"orgs/etzhayyim/com-etzhayyim-i18n"
+    (is (= #{"orgs/kotoba-lang/i18n-actor"
              "orgs/etzhayyim/com-etzhayyim-kawaraban"}
            (set (keep :dependency/west-path deps))))))
