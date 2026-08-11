@@ -4,10 +4,11 @@
 > links out. The 映像 (moving-image) sibling of 瓦版's printed sheet. ADR-2606161536 §D2.
 > **R0 design scaffold** (2026-06-16).
 
-The executable News-to-Video presentation actor is owned by `network-awai/utsushie`. Its source
+The executable News-to-Video presentation actor is owned by `network-awai/actor-utsushie`. The
+`actor-` role prefix makes its governed executable role explicit. Its source
 medium, `etzhayyim/com-etzhayyim-kawaraban`, remains an etzhayyim organism wire; utsushie owns only
 the Aozora/AT Protocol presentation edge. Existing DID, AT Protocol, Radicle, and old GitHub
-identities remain compatibility identifiers.
+identities, including the `network-awai/utsushie` redirect, remain compatibility identifiers.
 
 写し絵 (utsushie) was the Edo-period magic-lantern moving-picture show — Japan's
 pre-cinema projected image, the visual companion to the 瓦版 (kawaraban) news broadsheet.

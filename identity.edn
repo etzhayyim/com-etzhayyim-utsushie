@@ -1,6 +1,7 @@
 {:identity/id "did:web:utsushie.etzhayyim.com"
  :identity/actor "utsushie"
- :identity/also-known-as ["https://github.com/network-awai/utsushie"
+ :identity/also-known-as ["https://github.com/network-awai/actor-utsushie"
+                          "https://github.com/network-awai/utsushie"
                           "https://github.com/etzhayyim/com-etzhayyim-utsushie"]
  :identity/canonical-document "manifest.edn"
  :identity/external-did-document ".well-known/did.json"
