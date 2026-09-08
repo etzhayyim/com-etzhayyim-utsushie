@@ -16,7 +16,7 @@
     U6 (G7) member-signed     — publish carries no server-held key.
 
   Pure stdlib (no deps)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (def EXCERPT-MAX 280)                          ; = kawaraban G4 bound (lex/video.edn)
 (def ALLOWED-KINDS ["mirror" "actor-event"])   ; G11: 'original' is not a member
