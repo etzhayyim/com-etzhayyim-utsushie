@@ -5,8 +5,8 @@
 | Dimension | State |
 |---|---|
 | Lexicon | ✅ `lex/video.edn` — `com.etzhayyim.utsushie.video` with U1–U6 structural gates |
-| Methods | ✅ `src/utsushie/methods/render_plan.cljc` — offline, pure, deterministic plan builder + R0-gated `render()` |
-| Tests | ✅ Clojure/EDN suite via `clojure -M -e '(load-file "run_tests.clj")'` |
+| Methods | ✅ `src/utsushie/methods/render_plan.cljk` — offline, pure, deterministic plan builder + R0-gated `render()` |
+| Tests | ✅ Clojure/EDN suite via `clojure -M -e '(load-file "run_tests.cljk")'` |
 | Cells | ✅ dry-run social-post membrane; live publication remains R1-gated |
 | Manifest | ✅ canonical `manifest.edn`; legacy JSON-LD is external wire only |
 | Render | ⛔ R0-gated (G8 + Murakumo-only, U5 = G6) — `render()` raises by design |
