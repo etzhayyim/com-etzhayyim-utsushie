@@ -47,7 +47,7 @@ utsushie/
 ├── manifest.edn / identity.edn      # canonical actor metadata and identity
 ├── dependencies.edn                 # immutable root + flat-west actor pins
 ├── schema.edn                       # canonical Datascript/Datomic schema
-├── run_tests.clj                    # one-command Clojure test entrypoint
+├── run_tests.cljk                    # one-command Clojure test entrypoint
 ├── lex/video.edn                    # com.etzhayyim.utsushie.video (U1–U6 structural gates)
 ├── src/utsushie/
 │   ├── methods/                     # render plan + dry-run social projection
